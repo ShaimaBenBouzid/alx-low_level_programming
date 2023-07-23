@@ -14,6 +14,6 @@ int main(void)
 			putchar(c);
 			c++;
 		}
-	putcar('\n');
+	putchar('\n');
 	return (0);
 }
