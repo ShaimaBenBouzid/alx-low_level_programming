@@ -11,14 +11,14 @@ int main(void)
 	char i;
 
 	c = 'a';
-	d = 'A';
+	i = 'A';
 	while
 		(c <= 'z') {
 			putchar(c);
 			c++;
 		}
 	while
-		(d <= 'Z') {
+		(i <= 'Z') {
 			putchar(i);
 			i++;
 		}
