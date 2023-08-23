@@ -9,7 +9,6 @@
  */
 int _atoi(char *s)
 {
-
 	int i, d, n, len, f, digit;
 
 	i = 0;
@@ -38,7 +37,7 @@ int _atoi(char *s)
 				break;
 			f = 0;
 		}
-		i++
+		i++;
 	}
 
 	if (f == 0)
