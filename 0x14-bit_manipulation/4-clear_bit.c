@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * set_bit - sets the bit at the index.
+ * clear_bit - clears the bit at the index.
  * @n: the number to index.
- * @index: the bit to set.
+ * @index: the bit to clear.
  *
  * Return: 1 if successful, -1 on error.
  */
