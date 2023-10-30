@@ -1,51 +1,40 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "main.h"
 
-ssize_t read_textfile(const char *filename, size_t letters) {
-    if (filename == NULL)
-        return 0;
 
-    int fd = open(filename, O_RDONLY);
-    if (fd == -1)
-        return 0;
+/**
+ * read_textfile - reads a text file &  prints the letters.
+ * @filename: filename.
+ * @letters: numbers of letters printed
+ *
+ * Return: numbers of letters printed. If it fails, returns 0
+ */
 
-    char *buffer = (char *)malloc(letters);
-    if (buffer == NULL) {
-        close(fd);
-        return 0;
-    }
 
-    ssize_t bytes_read = read(fd, buffer, letters);
-    if (bytes_read == -1) {
-        close(fd);
-        free(buffer);
-        return 0;
-    }
 
-    ssize_t bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
-    if (bytes_written == -1 || bytes_written != bytes_read) {
-        close(fd);
-        free(buffer);
-        return 0;
-    }
+ssize_t read_textfile(const char *filename, size_t letters)
+{
+	int fd;
+	ssize_t nrd, nwr;
+	char *buf;
 
-    close(fd);
-    free(buffer);
+	if (!filename)
+		return (0);
 
-    return bytes_read;
-}
+	fd = open(filename, O_RDONLY);
 
-int main() {
-    const char *filename = "your_text_file.txt"; 
-    size_t letters_to_read = 1024;  
+	if (fd == -1)
+		return (0);
 
-    ssize_t letters_read = read_textfile(filename, letters_to_read);
-    if (letters_read == 0) {
-        printf("Error: Unable to read the file.\n");
-    } else {
-        printf("\nTotal letters read and printed: %zd\n", letters_read);
-    }
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
+		return (0);
 
-    return 0;
+	nrd = read(fd, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
+
+	close(fd);
+
+	free(buf);
+
+	return (nwr);
 }
