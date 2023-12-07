@@ -3,12 +3,12 @@
 
 
 /**
- * print_dlistint - prints doubly-linked list
+ * dlistint_len - returns length of dlist
  * @h: address of head node
  *
  * Return: size of list
  */
-size_t print_dlistint(const dlistint_t *h)
+size_t dlistint_len(const dlistint_t *h)
 {
         size_t i = 0;
 
